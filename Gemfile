@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.8'
+gem 'bootstrap-sass', '2.0.0'
 group :development, :test do
 	  gem 'sqlite3', '1.3.5'
 	    gem 'rspec-rails', '2.10.0'
@@ -14,7 +15,7 @@ group :assets do
    gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails', '2.0.2'
 
 group :test do
 gem 'capybara', '1.1.2'
