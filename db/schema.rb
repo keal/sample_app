@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120902223916) do
+ActiveRecord::Schema.define(:version => 20120906234505) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -33,14 +33,28 @@ ActiveRecord::Schema.define(:version => 20120902223916) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
+  create_table "todolists", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "percent",    :default => 0
+    t.string   "motivation", :default => "自分でがんばる"
+    t.string   "deadline",   :default => "なし"
+    t.string   "reason",     :default => "なんとなく"
+  end
+
+  add_index "todolists", ["user_id", "created_at"], :name => "index_todolists_on_user_id_and_created_at"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.boolean  "admin",           :default => false
+    t.string   "motivation",      :default => "自分でがんばる"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

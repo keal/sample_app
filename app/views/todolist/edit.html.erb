@@ -1,0 +1,13 @@
+<% provide(:title, 'Edit a to-do Object') %>
+<h1>Edit to-do List</h1>
+<div class="edit_first">
+<%= form_for(@todolist,url: user_todolist_path(@todolist.user_id,@todolist.id)) do |f|%>
+Title:<%= @todolist.title %><BR>
+Posted <%= time_ago_in_words(@todolist.created_at) %> ago.<BR>
+
+<BR>モチベーション: <%= f.select(:motivation,['自分でがんばる','ちょっと困ってるかも','誰か助けて','むりぽ'],{ class: 'pup'})%>
+<BR>期限:
+<BR>公開範囲：
+<BR><%= f.submit "Change", class: "btn btn-large btn-primary" %>
+<%end%>
+</div>

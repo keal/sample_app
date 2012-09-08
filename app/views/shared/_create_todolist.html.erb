@@ -1,0 +1,7 @@
+<%= form_for(@todolist,url: user_todolist_index_path(current_user.id)) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="field">
+		<%= f.text_area :title, placeholder: "workを入力してください..." %>
+	</div>
+	<%= f.submit "Add work list", class: "btn btn-large btn-primary" %>
+<% end %>

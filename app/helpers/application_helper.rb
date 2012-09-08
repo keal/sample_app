@@ -8,11 +8,9 @@ module ApplicationHelper
 		end
 	end
 
-	def show_delete_link object_of_micropost
-		if current_user?(object_of_micropost.user)
-    	link_to "delete", object_of_micropost, method: :delete,
-                                     data: { confirm: "You sure?" },
-                                     title: object_of_micropost.content 
+	def show_delete_link object
+		if current_user?(object.user)
+    	link_to "delete", object,method: :delete,data: { confirm: "Are you sure?"}
   		end 
   	end
 end

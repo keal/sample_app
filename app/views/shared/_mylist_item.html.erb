@@ -1,0 +1,19 @@
+<li id="<%= mylist_item.id %>">
+  <div class="title">
+    <h3>work: <%= mylist_item.title %></h3>
+  </div>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(mylist_item.created_at) %> ago.
+  </span>
+ 
+  <BR>モチベーション:<%=mylist_item.motivation%>
+  <BR>期限:<%=mylist_item.deadline%>
+  <BR>公開範囲：
+  <BR>
+  <%if current_user?(@user)%>
+  <%=link_to "edit", edit_user_todolist_path(mylist_item.user_id,mylist_item.id) ,class: "btn btn-large btn-primary"%>
+  <%=link_to "delete", user_todolist_path(mylist_item.user_id,mylist_item.id),method: :delete,data: { confirm: "Are you sure?" },title: mylist_item.title,class: "btn btn-large btn-primary" %>
+  <%else%>
+  <%=link_to "show", user_todolist_path(mylist_item.user_id,mylist_item.id)  %>
+  <%end%>
+</li>

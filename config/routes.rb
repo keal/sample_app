@@ -3,6 +3,7 @@ SampleApp::Application.routes.draw do
     member do
       get :following, :followers
     end
+    resources :todolist, except: [:new]
   end
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
